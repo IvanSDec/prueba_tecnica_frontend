@@ -12,6 +12,7 @@ export default function NotFound() {
 
     <div className="auth-background">
 
+      {/* Contenedor principal de la vista 404. */}|
       <div className="notfound-container">
 
         <div className="notfound-card">

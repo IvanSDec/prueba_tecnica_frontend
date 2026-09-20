@@ -25,15 +25,18 @@ export default function Login({ onLoginSuccess }) {
     phone_number: '',
   });
 
+  //* Maneja el envío del formulario de inicio de sesión.
   const handleLoginChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
+  //* Maneja el envío del formulario de registro.
   const handleRegisterChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
 
-const handleLoginSubmit = async (e) => {
+  //* Maneja el envío del formulario de inicio de sesión.
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setErrorMsg('');
@@ -59,6 +62,7 @@ const handleLoginSubmit = async (e) => {
     }
   };
 
+  //* Maneja el envío del formulario de registro.
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -95,21 +99,26 @@ const handleLoginSubmit = async (e) => {
     }
   };
 
+  //* Alterna entre los modos de inicio de sesión y registro.
   const toggleMode = () => {
     setErrorMsg('');
     setIsRegister(!isRegister);
   };
 
   return (
+
     <div className="auth-background">
+
       <div className={`auth-container ${isRegister ? 'right-panel-active' : ''}`}>
         
+        {/* Contenedor de los formularios de inicio de sesión y registro. */}
         {loading && (
           <div className="loading-overlay">
             <Loader />
           </div>
         )}
 
+        {/* Formulario de inicio de sesión. */}
         <div className="form-container sign-in-container">
           <form onSubmit={handleLoginSubmit} className="auth-form">
             <h2>Iniciar Sesión</h2>
@@ -151,6 +160,7 @@ const handleLoginSubmit = async (e) => {
           </form>
         </div>
 
+        {/* Formulario de registro. */}
         <div className="form-container sign-up-container">
           <form onSubmit={handleRegisterSubmit} className="auth-form">
             <h2>Crear Cuenta</h2>
@@ -241,6 +251,7 @@ const handleLoginSubmit = async (e) => {
           </form>
         </div>
 
+        {/* Contenedor de la superposición que contiene los paneles de información y los botones de alternancia. */}
         <div className="overlay-container">
 
           <div className="overlay">

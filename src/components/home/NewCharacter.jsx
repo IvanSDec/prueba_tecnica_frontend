@@ -3,6 +3,7 @@ import api from '../../api/axios';
 import { SPECIES_ES, STATUS_ES, GENDER_ES } from '../../utils/characterOptions';
 import Confirmation from '../Confirmation';
 
+//* Constante que representa el formulario vacío para un nuevo personaje. */
 const EMPTY_FORM = {
   name: '',
   status: 'Alive',
@@ -26,6 +27,7 @@ export default function NewCharacter({ locations, episodes, onClose, onCreated }
   const [errorMsg, setErrorMsg] = useState('');
   const [showConfirmation, setShowConfirmation] = useState(false);
 
+  //* Maneja los cambios en los campos del formulario.
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -33,12 +35,14 @@ export default function NewCharacter({ locations, episodes, onClose, onCreated }
   const assignedEpisodes = episodes.filter((ep) => formData.episodes.includes(ep.id));
   const availableEpisodes = episodes.filter((ep) => !formData.episodes.includes(ep.id));
 
+  //* Maneja la adición de episodios al personaje.
   const handleAddEpisode = () => {
     if (!episodeToAdd) return;
     setFormData({ ...formData, episodes: [...formData.episodes, Number(episodeToAdd)] });
     setEpisodeToAdd('');
   };
 
+  //* Maneja la eliminación de episodios del personaje.
   const handleRemoveEpisode = (episodeId) => {
     setFormData({
       ...formData,
@@ -46,6 +50,7 @@ export default function NewCharacter({ locations, episodes, onClose, onCreated }
     });
   };
 
+  //* Maneja la creación del personaje.
   const handleCreate = async () => {
     setSaving(true);
     setErrorMsg('');
@@ -70,13 +75,17 @@ export default function NewCharacter({ locations, episodes, onClose, onCreated }
     }
   };
 
+  //* Maneja el envío del formulario, mostrando la confirmación antes de crear el personaje.
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowConfirmation(true);
   };
 
   return (
+
     <div className="modal-overlay" onClick={onClose}>
+
+      {/* Contenedor del modal con fondo superpuesto */}
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>Nuevo Personaje</h2>
@@ -224,6 +233,7 @@ export default function NewCharacter({ locations, episodes, onClose, onCreated }
         </form>
       </div>
 
+      {/* Confirmación antes de crear el personaje */}
       {showConfirmation && (
         <Confirmation
           title="Crear personaje"
@@ -234,6 +244,9 @@ export default function NewCharacter({ locations, episodes, onClose, onCreated }
           loading={saving}
         />
       )}
+
     </div>
+
   );
+  
 }

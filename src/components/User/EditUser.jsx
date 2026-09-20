@@ -2,17 +2,24 @@ import { useState } from 'react';
 import api from '../../api/axios';
 import Confirmation from '../Confirmation';
 
+//* Opciones de rol disponibles para el usuario. */
 const ROLE_OPTIONS = [
 	{ value: 1, label: 'Administrador' },
 	{ value: 2, label: 'Editor' },
 	{ value: 3, label: 'Lectura' },
 ];
 
+//* Obtiene el valor del rol del usuario. */
 const getRoleValue = (user) => {
 	const role = Array.isArray(user.roles) ? user.roles[0] : user.roles;
 	return String(role || (user.is_superuser ? 1 : user.is_staff ? 2 : 3));
 };
 
+/**
+ * @author Iván Sánchez
+ * @updated 2026-09-19
+ * @returns {JSX.Element} Componente que permite editar la información de un usuario.
+*/
 export default function EditUser({ user, users, onClose, onUpdated }) {
 	const initialRole = getRoleValue(user);
 	const isAdministrator = initialRole === '1';
@@ -31,10 +38,12 @@ export default function EditUser({ user, users, onClose, onUpdated }) {
 	const [errorMsg, setErrorMsg] = useState('');
 	const [confirmation, setConfirmation] = useState(null);
 
+	//* Maneja los cambios en los campos del formulario.
 	const handleChange = (event) => {
 		setFormData({ ...formData, [event.target.name]: event.target.value });
 	};
 
+	//* Maneja la actualización de la información del usuario.
 	const handleUpdate = async () => {
 		setSaving(true);
 		setErrorMsg('');
@@ -66,6 +75,7 @@ export default function EditUser({ user, users, onClose, onUpdated }) {
 		}
 	};
 
+	//* Maneja el envío del formulario, mostrando la confirmación antes de actualizar el usuario.
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		setConfirmation({
@@ -77,6 +87,7 @@ export default function EditUser({ user, users, onClose, onUpdated }) {
 		});
 	};
 
+	//* Maneja la eliminación del usuario.
 	const handleDelete = async () => {
 		if (isLastAdministrator) {
 			setErrorMsg('No se puede eliminar al último administrador.');
@@ -98,6 +109,7 @@ export default function EditUser({ user, users, onClose, onUpdated }) {
 		}
 	};
 
+	//* Solicita la confirmación antes de eliminar el usuario.
 	const requestDelete = () => {
 		setConfirmation({
 			title: 'Eliminar usuario',
@@ -109,7 +121,10 @@ export default function EditUser({ user, users, onClose, onUpdated }) {
 	};
 
 	return (
+    
 		<div className="user-modal-overlay" onClick={onClose}>
+
+      {/* Contenedor del modal con fondo superpuesto */}
 			<div className="user-modal-card edit-user-modal" onClick={(event) => event.stopPropagation()}>
 				<div className="user-modal-header">
 					<div>
@@ -170,6 +185,7 @@ export default function EditUser({ user, users, onClose, onUpdated }) {
 				</form>
 			</div>
 
+      {/* Confirmación antes de actualizar o eliminar el usuario */}
 			{confirmation && (
 				<Confirmation
 					title={confirmation.title}
@@ -181,6 +197,9 @@ export default function EditUser({ user, users, onClose, onUpdated }) {
 					loading={saving || deleting}
 				/>
 			)}
+
 		</div>
+
 	);
+  
 }

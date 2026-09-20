@@ -23,6 +23,11 @@ De igual forma, al tratarse de un proyecto pequeño, elegí una **arquitectura b
 ## Requisitos previos
 - Tener instalado **Node.js** en el equipo (versión recomendada: `v20.x` o superior).
 
+## Recomendaciónes de extenciones para visualizar mejor el codigo
+- **Better Comments**
+- **Error Lens**
+- **Material Icon Theme**
+
 ## Instalación
 Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
 

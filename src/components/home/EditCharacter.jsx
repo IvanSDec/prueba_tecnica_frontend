@@ -27,6 +27,7 @@ export default function EditCharacter({ character, locations, episodes, onClose,
   const [errorMsg, setErrorMsg] = useState('');
   const [confirmation, setConfirmation] = useState(null);
 
+  //* Maneja los cambios en los campos del formulario.
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -34,12 +35,14 @@ export default function EditCharacter({ character, locations, episodes, onClose,
   const assignedEpisodes = episodes.filter((ep) => formData.episodes.includes(ep.id));
   const availableEpisodes = episodes.filter((ep) => !formData.episodes.includes(ep.id));
 
+  //* Maneja la adición de episodios al personaje.
   const handleAddEpisode = () => {
     if (!episodeToAdd) return;
     setFormData({ ...formData, episodes: [...formData.episodes, Number(episodeToAdd)] });
     setEpisodeToAdd('');
   };
 
+  //* Maneja la eliminación de episodios del personaje.
   const handleRemoveEpisode = (episodeId) => {
     setFormData({
       ...formData,
@@ -47,6 +50,7 @@ export default function EditCharacter({ character, locations, episodes, onClose,
     });
   };
 
+  //* Maneja la actualización del personaje.
   const handleUpdate = async () => {
     setSaving(true);
     setErrorMsg('');
@@ -69,6 +73,7 @@ export default function EditCharacter({ character, locations, episodes, onClose,
     }
   };
 
+  //* Maneja el envío del formulario, mostrando la confirmación antes de actualizar.
   const handleSubmit = (e) => {
     e.preventDefault();
     setConfirmation({
@@ -80,6 +85,7 @@ export default function EditCharacter({ character, locations, episodes, onClose,
     });
   };
 
+  //* Maneja la eliminación del personaje.
   const handleDelete = async () => {
     setDeleting(true);
     setErrorMsg('');
@@ -98,6 +104,7 @@ export default function EditCharacter({ character, locations, episodes, onClose,
     }
   };
 
+  //* Solicita la confirmación antes de eliminar el personaje.
   const requestDelete = () => {
     setConfirmation({
       title: 'Eliminar personaje',
@@ -114,6 +121,7 @@ export default function EditCharacter({ character, locations, episodes, onClose,
 
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
 
+        {/* Encabezado del modal con título y botón de cierre */}
         <div className="modal-header">
           <h2>{readOnly ? 'Información del Personaje' : 'Editar Personaje'}</h2>
           <button type="button" className="modal-close-btn" onClick={onClose}>
@@ -121,8 +129,10 @@ export default function EditCharacter({ character, locations, episodes, onClose,
           </button>
         </div>
 
+        {/* Mensaje de error si ocurre algún problema al actualizar o eliminar el personaje */}
         {errorMsg && <div className="error-badge">{errorMsg}</div>}
 
+        {/* Formulario de edición del personaje. */}
         <form onSubmit={handleSubmit} className="modal-form">
           <fieldset className="character-read-only-fields" disabled={readOnly}>
           <div className="modal-form-grid">
@@ -280,6 +290,7 @@ export default function EditCharacter({ character, locations, episodes, onClose,
           )}
         </form>
 
+        {/* Confirmación antes de eliminar o actualizar el personaje */}
         {confirmation && (
           <Confirmation
             title={confirmation.title}

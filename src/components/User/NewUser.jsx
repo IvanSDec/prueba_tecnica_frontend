@@ -2,12 +2,14 @@ import { useState } from 'react';
 import api from '../../api/axios';
 import Confirmation from '../Confirmation';
 
+//* Constante que define las opciones de rol disponibles para el nuevo usuario.
 const ROLE_OPTIONS = [
 	{ value: 1, label: 'Administrador' },
 	{ value: 2, label: 'Editor' },
 	{ value: 3, label: 'Lectura' },
 ];
 
+//* Constante que define los valores por defecto del formulario de creación de un nuevo usuario.
 const EMPTY_FORM = {
 	username: '',
 	first_name: '',
@@ -19,16 +21,23 @@ const EMPTY_FORM = {
 	role: '2',
 };
 
+/**
+ * @author Iván Sánchez
+ * @updated 2026-09-19
+ * @returns {JSX.Element} Componente que permite crear un nuevo usuario.
+*/
 export default function NewUser({ onClose, onCreated }) {
 	const [formData, setFormData] = useState(EMPTY_FORM);
 	const [saving, setSaving] = useState(false);
 	const [errorMsg, setErrorMsg] = useState('');
-		const [showConfirmation, setShowConfirmation] = useState(false);
+	const [showConfirmation, setShowConfirmation] = useState(false);
 
+  //* Maneja los cambios en los campos del formulario.
 	const handleChange = (event) => {
 		setFormData({ ...formData, [event.target.name]: event.target.value });
 	};
 
+  //* Maneja la creación del nuevo usuario.
 	const handleCreate = async () => {
 		setSaving(true);
 		setErrorMsg('');
@@ -57,35 +66,47 @@ export default function NewUser({ onClose, onCreated }) {
 		}
 	};
 
+  //* Maneja el envío del formulario.
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		setShowConfirmation(true);
 	};
 
 	return (
+
 		<div className="user-modal-overlay" onClick={onClose}>
+
 			<div className="user-modal-card new-user-modal" onClick={(event) => event.stopPropagation()}>
+
 				<div className="user-modal-header">
+
 					<div>
 						<span className="user-modal-eyebrow">Administración</span>
 
-				{showConfirmation && (
-					<Confirmation
-						title="Crear usuario"
-						message="¿Deseas crear este usuario con los datos proporcionados?"
-						confirmText="Crear usuario"
-						onConfirm={handleCreate}
-						onCancel={() => setShowConfirmation(false)}
-						loading={saving}
-					/>
-				)}
+            {/* Renderiza el componente de confirmación si se debe mostrar. */}
+            {showConfirmation && (
+              <Confirmation
+                title="Crear usuario"
+                message="¿Deseas crear este usuario con los datos proporcionados?"
+                confirmText="Crear usuario"
+                onConfirm={handleCreate}
+                onCancel={() => setShowConfirmation(false)}
+                loading={saving}
+              />
+            )}
+
 						<h2>Nuevo usuario</h2>
+
 					</div>
+
 					<button type="button" className="user-modal-close" onClick={onClose}>&times;</button>
+
 				</div>
 
+        {/* Muestra el mensaje de error si existe. */}
 				{errorMsg && <div className="user-modal-error">{errorMsg}</div>}
 
+        {/* Formulario de creación de nuevo usuario. */}
 				<form onSubmit={handleSubmit} className="user-modal-form">
 					<div className="new-user-fields">
 
@@ -132,7 +153,11 @@ export default function NewUser({ onClose, onCreated }) {
 						<button type="submit" className="user-btn-primary" disabled={saving}>{saving ? 'Guardando...' : 'Crear usuario'}</button>
 					</div>
 				</form>
+        
 			</div>
+
 		</div>
+
 	);
+
 }

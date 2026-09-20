@@ -3,6 +3,7 @@ import { FiRefreshCw, FiX } from 'react-icons/fi';
 import api from '../api/axios';
 import CounterNewCharacters from '../components/extra/counterNewCharacters';
 
+//* Obtiene el número de personajes nuevos agregados a partir de los posibles campos en la respuesta de la API. */
 const getAddedCharacters = (data) => {
   const possibleValues = [
     data?.new_characters_added,
@@ -13,16 +14,21 @@ const getAddedCharacters = (data) => {
     data?.count,
     data?.total_added,
   ];
-
   const value = possibleValues.find((item) => typeof item === 'number');
   return value ?? 0;
 };
 
+/**
+ * @author Iván Sánchez
+ * @updated 2026-09-19
+ * @returns {JSX.Element} Página de mantenimiento para actualizar personajes.
+*/
 export default function Extra() {
   const [syncing, setSyncing] = useState(false);
   const [syncResult, setSyncResult] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
 
+  //* Maneja la sincronización de personajes con la API original.
   const handleSync = async () => {
     setSyncing(true);
     setErrorMsg('');
@@ -43,7 +49,10 @@ export default function Extra() {
   };
 
   return (
+
     <div className="extra-container">
+
+      {/* Panel principal de mantenimiento para actualizar personajes. */}
       <section className="extra-panel">
         <div className="extra-heading">
           <span className="extra-eyebrow">Mantenimiento</span>
@@ -69,6 +78,7 @@ export default function Extra() {
         {errorMsg && <div className="extra-error">{errorMsg}</div>}
       </section>
 
+      {/* Modal que muestra el resultado de la sincronización de personajes. */}
       {syncResult && (
         <div className="extra-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="sync-result-title">
           <div className="extra-modal-card">
@@ -94,6 +104,9 @@ export default function Extra() {
           </div>
         </div>
       )}
+
     </div>
+
   );
+
 }

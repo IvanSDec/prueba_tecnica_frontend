@@ -33,6 +33,7 @@ export default function Home() {
 
   const extractList = (data) => (Array.isArray(data) ? data : data?.results || []);
 
+  //* Efecto para obtener las opciones de ubicaciones y episodios al montar el componente. */
   useEffect(() => {
     const fetchOptions = async () => {
       try {
@@ -49,6 +50,7 @@ export default function Home() {
     fetchOptions();
   }, []);
 
+  //* Función para obtener la lista de personajes desde la API. */
   const fetchCharacters = useCallback(async () => {
     setLoading(true);
     setErrorMsg('');
@@ -79,15 +81,18 @@ export default function Home() {
     }
   }, [page, searchTerm, selectedSpecies, selectedStatus, selectedGender]);
 
+  //* Efecto para obtener la lista de personajes cuando cambian los filtros o la página. */
   useEffect(() => {
     fetchCharacters();
   }, [fetchCharacters]);
 
+  //* Función para manejar el cambio de filtros. */
   const handleFilterChange = (setter) => (e) => {
     setter(e.target.value);
     setPage(1);
   };
 
+  //* Función para restablecer los filtros a sus valores iniciales. */
   const handleResetFilters = () => {
     setSearchTerm('');
     setSelectedSpecies('');
@@ -96,10 +101,12 @@ export default function Home() {
     setPage(1);
   };
 
+  //* Función para abrir el detalle de un personaje. */
   const handleOpenDetail = (character) => {
     setEditingCharacter(character);
   };
 
+  //* Función para obtener los números de página visibles en la paginación. */
   const getPageNumbers = () => {
     const maxVisible = 5;
     let startPage = Math.max(1, page - Math.floor(maxVisible / 2));
@@ -118,8 +125,10 @@ export default function Home() {
   };
 
   return (
+
     <div className="home-container">
       
+      {/* Encabezado de la sección del catálogo de personajes. */}
       <header className="home-header">
         <h1>Catálogo de Personajes</h1>
         <p>Bienvenido al catálogo de personajes</p>
@@ -130,6 +139,7 @@ export default function Home() {
         )}
       </header>
 
+      {/* Barra de filtros para buscar y filtrar personajes. */}
       <div className="filter-bar">
         <div className="filter-group search-input">
           <input
@@ -184,6 +194,7 @@ export default function Home() {
         )}
       </div>
 
+      {/* Barra de paginación para navegar entre las páginas de personajes. */}
       <div className="pagination-bar">
             
         <button
@@ -236,6 +247,7 @@ export default function Home() {
         
       </div>
 
+      {/* Sección principal donde se muestran los personajes según los filtros y la paginación. */} 
       {loading ? (
 
         <div className="home-loader">
@@ -296,6 +308,7 @@ export default function Home() {
 
       )}
 
+      {/* Modales para crear y editar personajes. */}
       {canEditCharacters && showNewModal && (
         <NewCharacter
           locations={locations}
@@ -305,6 +318,7 @@ export default function Home() {
         />
       )}
 
+      {/* Modal para crear un nuevo personaje. */}
       {editingCharacter && (
         <EditCharacter
           key={editingCharacter.id}

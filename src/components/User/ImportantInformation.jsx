@@ -1,8 +1,17 @@
 import { FiInfo } from 'react-icons/fi';
 
+/**
+ * @author Iván Sánchez
+ * @updated 2026-09-19
+ * @returns {JSX.Element} Componente que muestra información importante sobre los roles de usuario.
+*/
 export default function ImportantInformation({ onClose }) {
+
 	return (
+
 		<div className="important-information-overlay" onClick={onClose}>
+
+      {/* Contenedor del modal de información importante */}
 			<div
 				className="important-information-modal"
 				role="dialog"
@@ -25,6 +34,9 @@ export default function ImportantInformation({ onClose }) {
 					Aceptar
 				</button>
 			</div>
+
 		</div>
+
 	);
+
 }

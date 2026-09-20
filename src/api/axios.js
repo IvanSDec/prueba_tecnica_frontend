@@ -4,7 +4,7 @@ import axios from 'axios';
  * @author Iván Sánchez
  * @updated 2026-09-19
  * @returns {import('axios').AxiosInstance} Instancia configurada de Axios.
- */
+*/
 const API_BASE_URL = 'http://127.0.0.1:8000/api/';
 
 //* Instancia principal de Axios

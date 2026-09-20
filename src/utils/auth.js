@@ -2,7 +2,8 @@
  * @author Iván Sánchez
  * @updated 2026-09-19
  * @returns {boolean} valida si el token es válido y no ha expirado.
- */
+*/
+//* Función para validar si un token JWT es válido y no ha expirado. */
 export function isValidToken(token) {
   if (!token) return false;
 

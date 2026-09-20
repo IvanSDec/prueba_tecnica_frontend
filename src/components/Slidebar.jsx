@@ -6,6 +6,11 @@ import { FaUsers, FaBars, FaTimes } from "react-icons/fa";
 import { IoLogOutOutline } from "react-icons/io5";
 import { canManageUsers, getStoredUser } from '../utils/permissions';
 
+/**
+ * @author Iván Sánchez
+ * @updated 2026-09-19
+ * @returns {JSX.Element} Componente de la barra lateral con navegación y control de acceso según permisos.
+*/
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -14,6 +19,7 @@ export default function Sidebar() {
   const toggleSidebar = () => setIsOpen(!isOpen);
   const closeSidebar = () => setIsOpen(false);
 
+  //* Maneja el cierre de sesión del usuario, eliminando los tokens y la información del usuario del almacenamiento local y redirigiendo al login.
   const handleLogout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
@@ -33,6 +39,7 @@ export default function Sidebar() {
         onClick={closeSidebar}
       />
 
+      {/* Barra lateral que contiene la navegación y el pie de página. */}
       <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
 
         <div className="sidebar-brand">

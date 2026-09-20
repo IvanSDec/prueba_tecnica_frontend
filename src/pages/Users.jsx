@@ -6,17 +6,20 @@ import NewUser from '../components/User/NewUser';
 import EditUser from '../components/User/EditUser';
 import ImportantInformation from '../components/User/ImportantInformation';
 
+//* Funciones auxiliares para obtener información del usuario. */
 const getUserName = (user) => {
   const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
   return fullName || user.username || user.name || user.email || 'Sin nombre';
 };
 
+//* Funciones auxiliares para obtener el rol y las iniciales del usuario. */
 const ROLE_NAMES = {
   1: 'Administrador',
   2: 'Editor',
   3: 'Lectura',
 };
 
+//* Función auxiliar para obtener el rol del usuario. */
 const getUserRole = (user) => {
   const apiRole = Array.isArray(user.roles) ? user.roles[0] : user.roles;
   if (apiRole !== undefined && apiRole !== null) {
@@ -27,8 +30,14 @@ const getUserRole = (user) => {
   return user.role || 'Usuario';
 };
 
+//* Función auxiliar para obtener las iniciales del usuario. */
 const getInitials = (user) => getUserName(user).slice(0, 2).toUpperCase();
 
+/**
+ * @author Iván Sánchez
+ * @updated 2026-09-19
+ * @returns {JSX.Element} Componente de administración de usuarios.
+*/
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,6 +48,7 @@ export default function Users() {
   const [editingUser, setEditingUser] = useState(null);
   const [showImportantInformation, setShowImportantInformation] = useState(false);
 
+  //* Función para obtener la lista de usuarios desde la API. */
   const fetchUsers = useCallback(async () => {
     setLoading(true);
     setErrorMsg('');
@@ -57,6 +67,7 @@ export default function Users() {
     }
   }, [page]);
 
+  //* Efecto para cargar la lista de usuarios al montar el componente y cuando cambie la página. */
   useEffect(() => {
     const loadUsers = window.setTimeout(() => fetchUsers(), 0);
     return () => window.clearTimeout(loadUsers);
@@ -66,6 +77,7 @@ export default function Users() {
 
     <div className="users-container">
 
+      {/* Encabezado de la sección de administración de usuarios. */}
       <header className="users-header">
 
         <div>
@@ -94,6 +106,7 @@ export default function Users() {
 
       </header>
 
+      {/* Panel que contiene la tabla de usuarios y la paginación. */}
       <section className="users-panel">
         <div className="users-panel-heading">
           <div><h2>Directorio de usuarios</h2></div>
@@ -119,6 +132,7 @@ export default function Users() {
         {!loading && !errorMsg && users.length > 0 && <div className="users-pagination"><span>Mostrando {users.length} usuarios</span><div><button type="button" disabled={page <= 1} onClick={() => setPage((current) => current - 1)}>Anterior</button><button type="button" disabled={page >= totalPages} onClick={() => setPage((current) => current + 1)}>Siguiente</button></div></div>}
       </section>
 
+      {/* Modales para crear y editar usuarios, así como información importante. */}
       {showNewModal && (
         <NewUser
           onClose={() => setShowNewModal(false)}
@@ -126,6 +140,7 @@ export default function Users() {
         />
       )}
 
+      {/* Modal para crear un nuevo usuario. */}
       {editingUser && (
         <EditUser
           key={editingUser.id}
@@ -136,9 +151,13 @@ export default function Users() {
         />
       )}
 
+      {/* Modal para editar un usuario existente. */}
       {showImportantInformation && (
         <ImportantInformation onClose={() => setShowImportantInformation(false)} />
       )}
+
     </div>
+
   );
+
 }
