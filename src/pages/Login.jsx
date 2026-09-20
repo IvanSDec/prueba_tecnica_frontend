@@ -72,7 +72,7 @@ export default function Login({ onLoginSuccess }) {
       const payload = { ...registerData };
       if (!payload.birth_date) delete payload.birth_date;
       const registerAndLoginProcess = (async () => {
-        await api.post('users/', payload);
+        await api.post('users/create/', payload);
         return await api.post('users/token/', {
           email: registerData.email,
           password: registerData.password,

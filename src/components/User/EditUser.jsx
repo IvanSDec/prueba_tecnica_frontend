@@ -62,7 +62,7 @@ export default function EditUser({ user, users, onClose, onUpdated }) {
 				return;
 			}
 
-			await api.patch(`users/${user.id}/`, payload);
+			await api.patch(`users/${user.id}/update/`, payload);
 			await onUpdated();
 			onClose();
 		} catch (error) {
@@ -98,7 +98,7 @@ export default function EditUser({ user, users, onClose, onUpdated }) {
 		setErrorMsg('');
 
 		try {
-			await api.delete(`users/${user.id}/`);
+			await api.delete(`users/${user.id}/delete/`);
 			await onUpdated();
 			onClose();
 		} catch (error) {

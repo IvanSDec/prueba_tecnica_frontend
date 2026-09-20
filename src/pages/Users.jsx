@@ -53,7 +53,7 @@ export default function Users() {
     setLoading(true);
     setErrorMsg('');
     try {
-      const response = await api.get('users/', { params: { page } });
+      const response = await api.get('users/list/', { params: { page } });
       const data = response.data;
       const result = Array.isArray(data) ? data : data?.results || [];
       setUsers(result);

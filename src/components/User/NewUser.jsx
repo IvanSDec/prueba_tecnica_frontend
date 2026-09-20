@@ -53,7 +53,7 @@ export default function NewUser({ onClose, onCreated }) {
 				roles: [Number(formData.role)],
 			};
 
-			await api.post('users/', payload);
+			await api.post('users/create/', payload);
 			await onCreated();
 			onClose();
 		} catch (error) {
