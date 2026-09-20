@@ -1,4 +1,4 @@
-# Portfolio Frontend
+# PRUEBA TECNICA FRONTEND
 
 > [!NOTE]
 >   **Diseñado y desarrollado por:**  
@@ -24,7 +24,7 @@
 
 1. Clona el repositorio:
    ```bash
-   git clone 
+   git clone https://github.com/IvanSDec/prueba_tecnica_frontend.git
 
 2. Instala las dependencias:
     ```bash
@@ -34,25 +34,12 @@
     ```bash
     npm run dev
 
-4. Para compilar el proyecto para producción:
-    ```bash
-    npm run build
-
-5. Para iniciar el servidor en producción
-   ```bash
-   npm run start
-
-## Despliegue
-    El proyecto está configurado para ser desplegado en AWS. Asegúrate de tener 
-    configuradas las credenciales de AWS y sigue las instrucciones de despliegue 
-    en la documentación oficial de AWS.
 
 > [!IMPORTANT]
->   Si tienes alguna duda o sugerencia, no dudes en contactarme:
+>   Si tienes alguna duda, no dudes en contactarme:
 > 
 >   [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/ivanscarrillomx/)
 > 
 >   [![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/profile.php?id=100001168921982)
-
-## Licencia
-    Este proyecto está bajo la licencia GNU.
+> 
+>   [![Gmail](ivandecg1@gmail.com)
