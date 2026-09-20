@@ -1,0 +1,97 @@
+.notfound-container {
+  width: 100%;
+  max-width: 520px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notfound-card {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn404 0.5s ease-out;
+}
+
+.notfound-code {
+  font-size: 5.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #00e5ff;
+  text-shadow: 0 0 30px rgba(0, 229, 255, 0.35);
+  letter-spacing: -2px;
+}
+
+.notfound-divider {
+  width: 60px;
+  height: 4px;
+  background: #0088ff;
+  border-radius: 2px;
+  margin: 1.2rem 0;
+  box-shadow: 0 0 10px rgba(0, 136, 255, 0.6);
+}
+
+.notfound-card h2 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.8rem 0;
+}
+
+.notfound-card p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+.btn-404 {
+  max-width: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn-404:hover {
+  background: #00e5ff;
+  color: #0f172a;
+  box-shadow: 0 8px 25px rgba(0, 229, 255, 0.4);
+}
+
+@keyframes fadeIn404 {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .notfound-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .notfound-code {
+    font-size: 4.2rem;
+  }
+  
+  .notfound-card h2 {
+    font-size: 1.4rem;
+  }
+}

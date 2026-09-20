@@ -1,0 +1,22 @@
+@import './styles/components/loader.css';
+@import './styles/pages/login.css';
+@import './styles/pages/notFound.css';
+@import './styles/pages/home.css';
+@import './styles/pages/users.css';
+@import './styles/components/slidebar.css';
+@import './styles/components/home/editCharacter.css';
+@import './styles/components/home/newCharacter.css';
+@import './styles/components/user/newUser.css';
+@import './styles/components/user/editUser.css';
+@import './styles/components/confirmation.css';
+@import './styles/pages/extra.css';
+@import './styles/components/extra/counterNewCharacters.css';
+@import './styles/components/user/importantInformation.css';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, Roboto, Arial, sans-serif;
+  /* border: 1px solid red; */
+}

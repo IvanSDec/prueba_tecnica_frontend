@@ -1,0 +1,88 @@
+.confirmation-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 3000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	background: rgba(2, 6, 23, 0.78);
+	backdrop-filter: blur(5px);
+}
+
+.confirmation-card {
+	width: min(100%, 420px);
+	padding: 1.75rem;
+	border: 1px solid rgba(34, 211, 238, 0.22);
+	border-radius: 14px;
+	color: #f8fafc;
+	background: #111c31;
+	box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
+}
+
+.confirmation-eyebrow {
+	color: #22d3ee;
+	font-size: 0.7rem;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.confirmation-card h2 {
+	margin: 0.4rem 0 0.65rem;
+	font-size: 1.2rem;
+}
+
+.confirmation-card p {
+	color: #cbd5e1;
+	font-size: 0.9rem;
+	line-height: 1.5;
+}
+
+.confirmation-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.7rem;
+	margin-top: 1.5rem;
+}
+
+.confirmation-actions button {
+	padding: 0.65rem 0.95rem;
+	border: 1px solid rgba(148, 163, 184, 0.25);
+	border-radius: 8px;
+	color: #cbd5e1;
+	background: transparent;
+	font: inherit;
+	font-size: 0.82rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.confirmation-actions button:last-child {
+	border-color: #06b6d4;
+	color: #06202b;
+	background: #06b6d4;
+}
+
+.confirmation-actions button:hover:not(:disabled) {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.confirmation-actions button:last-child:hover:not(:disabled) {
+	background: #22d3ee;
+}
+
+.confirmation-actions .confirmation-danger {
+	border-color: rgba(248, 113, 113, 0.5);
+	color: #ffffff;
+	background: #dc2626;
+}
+
+.confirmation-actions .confirmation-danger:hover:not(:disabled) {
+	background: #ef4444;
+}
+
+.confirmation-actions button:disabled {
+	cursor: wait;
+	opacity: 0.55;
+}

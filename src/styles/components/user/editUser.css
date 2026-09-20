@@ -1,0 +1,237 @@
+.edit-user-modal {
+	max-width: 680px;
+}
+
+.user-modal-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 2000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	background: rgba(2, 6, 23, 0.78);
+	backdrop-filter: blur(4px);
+}
+
+.user-modal-card {
+	width: 100%;
+	max-height: 90vh;
+	overflow-y: auto;
+	padding: 2rem;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 18px;
+	color: #ffffff;
+	background: rgba(15, 23, 42, 0.96);
+	box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55), 0 0 20px rgba(0, 229, 255, 0.12);
+}
+
+.user-modal-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.user-modal-eyebrow {
+	color: #22d3ee;
+	font-size: 0.7rem;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.user-modal-header h2 {
+	margin-top: 0.35rem;
+	color: #ffffff;
+	font-size: 1.45rem;
+}
+
+.user-modal-close {
+	border: 0;
+	border-radius: 8px;
+	padding: 0.15rem 0.5rem;
+	color: #94a3b8;
+	background: transparent;
+	font-size: 1.6rem;
+	cursor: pointer;
+}
+
+.user-modal-close:hover {
+	color: #ffffff;
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.user-modal-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.user-input-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.user-input-group label {
+	color: #cbd5e1;
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+.user-input-group input,
+.user-input-group select {
+	width: 100%;
+	padding: 0.7rem 0.85rem;
+	border: 1px solid rgba(148, 163, 184, 0.22);
+	border-radius: 8px;
+	outline: none;
+	color: #f8fafc;
+	background: rgba(2, 6, 23, 0.42);
+	font: inherit;
+	font-size: 0.88rem;
+}
+
+.user-input-group select option {
+	color: #f8fafc;
+	background: #111c31;
+}
+
+.user-input-group input:focus,
+.user-input-group select:focus {
+	border-color: #22d3ee;
+	box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
+}
+
+.user-input-group input:disabled,
+.user-input-group select:disabled {
+	cursor: not-allowed;
+	opacity: 0.55;
+}
+
+.user-modal-error,
+.user-modal-notice {
+	margin-bottom: 1rem;
+	padding: 0.75rem 0.9rem;
+	border-radius: 8px;
+	font-size: 0.82rem;
+}
+
+.user-modal-error {
+	border: 1px solid rgba(248, 113, 113, 0.35);
+	color: #fecaca;
+	background: rgba(239, 68, 68, 0.12);
+}
+
+.user-modal-notice {
+	border: 1px solid rgba(251, 191, 36, 0.3);
+	color: #fde68a;
+	background: rgba(251, 191, 36, 0.1);
+}
+
+.user-modal-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.75rem;
+}
+
+.user-modal-actions-split {
+	align-items: center;
+	justify-content: space-between;
+}
+
+.user-btn-danger {
+	padding: 0.7rem 1rem;
+	border: 1px solid rgba(248, 113, 113, 0.4);
+	border-radius: 8px;
+	color: #fca5a5;
+	background: rgba(239, 68, 68, 0.12);
+	font: inherit;
+	font-size: 0.84rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.user-btn-danger:hover:not(:disabled) {
+	border-color: #f87171;
+	color: #ffffff;
+	background: rgba(239, 68, 68, 0.28);
+}
+
+.user-btn-danger:disabled {
+	cursor: not-allowed;
+	opacity: 0.45;
+}
+
+.user-btn-secondary,
+.user-btn-primary {
+	padding: 0.7rem 1rem;
+	border-radius: 8px;
+	font: inherit;
+	font-size: 0.84rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.user-btn-secondary {
+	border: 1px solid rgba(148, 163, 184, 0.25);
+	color: #cbd5e1;
+	background: transparent;
+}
+
+.user-btn-primary {
+	border: 1px solid #06b6d4;
+	color: #06202b;
+	background: #06b6d4;
+}
+
+.user-btn-secondary:hover {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.user-btn-primary:hover {
+	background: #22d3ee;
+}
+
+.user-btn-secondary:disabled,
+.user-btn-primary:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+@media (max-width: 640px) {
+	.user-modal-actions-split {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.user-modal-actions-split > .user-modal-actions {
+		justify-content: stretch;
+	}
+
+	.user-modal-actions-split > .user-modal-actions button {
+		flex: 1;
+	}
+}
+
+.edit-user-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.edit-user-fields .user-input-wide {
+	grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+	.edit-user-fields {
+		grid-template-columns: 1fr;
+	}
+
+	.edit-user-fields .user-input-wide {
+		grid-column: auto;
+	}
+}
