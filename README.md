@@ -33,10 +33,6 @@ De igual forma, al tratarse de un proyecto pequeño, elegí una **arquitectura b
 ## Instalación
 Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
 
-0. Extra
-    ```bash
-    Asegurate de tener instalado Node.js en tu equipo version recomendada v24.21.0
-
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/IvanSDec/prueba_tecnica_frontend.git
